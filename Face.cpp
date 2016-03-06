@@ -112,7 +112,7 @@ void Face::moveNose(string dir, float d) {
 	}
 }
 
-void smile() {
+void Face::smile() {
 	face.clear();
 
 	face.push_back(normal_exp.at(0));
@@ -123,4 +123,45 @@ void smile() {
 	face.push_back(normal_exp.at(5));
 	face.push_back(normal_exp.at(6));
 	face.push_back(normal_exp.at(7));
+
+	//trus yg berubah mulutnya
+}
+
+void Face::laugh() {
+	face.clear();
+
+	face.push_back(normal_exp.at(0));
+	face.push_back(normal_exp.at(1));
+	face.push_back(normal_exp.at(2));
+	face.push_back(normal_exp.at(3));
+	face.push_back(normal_exp.at(4));
+	face.push_back(normal_exp.at(5));
+	face.push_back(normal_exp.at(6));
+	face.push_back(normal_exp.at(7));
+
+	//yang berubah mulutnya	
+}
+
+void Face::cry() {
+	face.clear();
+
+	face.push_back(normal_exp.at(0));
+	face.push_back(normal_exp.at(1));
+	face.push_back(normal_exp.at(2));
+	face.push_back(normal_exp.at(3));
+
+	//yang berubah mulut dan mata
+}
+
+void Face::eyesClosed() {
+	face.clear();
+
+	face.push_back(normal_exp.at(0));
+	face.push_back(normal_exp.at(1));
+	face.push_back(normal_exp.at(2));
+	face.push_back(normal_exp.at(3));
+	face.push_back(normal_exp.at(8));
+	face.push_back(normal_exp.at(9));
+
+	//yang berubah matanya
 }
