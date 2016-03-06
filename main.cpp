@@ -49,9 +49,64 @@ int main() {
 	faceMap.insert(std::pair<std::string, vector<Point> >("eye_tag",eyeTagVector));
 	
 
-	printf("masuk sini sebelum?\n");
+	Curve face(face_vector,0.05);
+	Curve left_eyebrow(left_eyebrow_vector,0.05);
+	Curve right_eyebrow(right_eyebrow_vector,0.05);
+	Curve left_upper_eye(left_upper_eye_vector,0.05);
+	Curve right_upper_eye(right_upper_eye_vector,0.05);
+	Curve left_lower_eye(left_lower_eye_vector,0.05);
+	Curve right_lower_eye(right_lower_eye_vector,0.05);
+	Curve noseCurve(nose_vector, 0.05);
+	Curve upperLipCurve(upperLipVector, 0.05);
+	Curve bottomLipCurve(bottomLipVector, 0.05);
+
+
 	// Face myFace(faceMap); // >>>>> NGEBUG COOOY <<<<< //
-	printf("masuk sini sesudah?\n");
+	Face myFace;
+	myFace.head = face;
+	myFace.face.push_back(myFace.head);
+	myFace.normal_exp.push_back(myFace.head);
+
+	myFace.nose = noseCurve;
+	myFace.face.push_back(myFace.nose);
+	myFace.normal_exp.push_back(myFace.nose);
+
+	myFace.eyebrows.push_back(right_eyebrow);
+	myFace.face.push_back(myFace.eyebrows.at(0));
+	myFace.normal_exp.push_back(myFace.eyebrows.at(0));
+
+	myFace.eyebrows.push_back(left_eyebrow);
+	myFace.face.push_back(myFace.eyebrows.at(1));
+	myFace.normal_exp.push_back(myFace.eyebrows.at(1));
+
+	myFace.eyes.push_back(right_upper_eye);
+	myFace.face.push_back(myFace.eyes.at(0));
+	myFace.normal_exp.push_back(myFace.eyes.at(0));
+
+	myFace.eyes.push_back(right_lower_eye);
+	myFace.face.push_back(myFace.eyes.at(1));
+	myFace.normal_exp.push_back(myFace.eyes.at(1));
+
+	myFace.eyes.push_back(left_upper_eye);
+	myFace.face.push_back(myFace.eyes.at(2));
+	myFace.normal_exp.push_back(myFace.eyes.at(2));
+
+	myFace.eyes.push_back(left_lower_eye);
+	myFace.face.push_back(myFace.eyes.at(3));
+	myFace.normal_exp.push_back(myFace.eyes.at(3));
+
+	myFace.lips.push_back(upperLipCurve);
+	myFace.face.push_back(myFace.lips.at(0));
+	myFace.normal_exp.push_back(myFace.lips.at(0));
+
+	myFace.lips.push_back(bottomLipCurve);
+	myFace.face.push_back(myFace.lips.at(1));
+	myFace.normal_exp.push_back(myFace.lips.at(1));
+
+	myFace.tags.insert(std::pair<std::string, vector<Point> >("lipTag", lipTagVector));
+	myFace.tags.insert(std::pair<std::string, vector<Point> >("laughTag", mouthTagVector));
+	myFace.tags.insert(std::pair<std::string, vector<Point> >("eyeTag", eyeTagVector));
+
 
 	// --------------END OF INIT-------------- //
 
@@ -66,28 +121,28 @@ int main() {
 			//PANGGIL FUNGSI UNTUK REDRAW MOVEMENT
 			if(key=='a' || key=='A') {
 				// SMILE
-				// myFace.smile(1);
+				myFace.smile(1);
 				
 				FB.drawCircle(Point(345,248),9,255, 255, 255, 0);
 				FB.drawCircle(Point(455,248),9,255, 255, 255, 0);
 			}
 			else if(key=='s' || key=='S') {
 				// LAUGH
-				// myFace.laugh(1);
+				myFace.laugh(1);
 
 				FB.drawCircle(Point(345,248),9,255, 255, 255, 0);
 				FB.drawCircle(Point(455,248),9,255, 255, 255, 0);
 			}
 			else if(key=='d' || key=='D') {
 				// CRY
-				// myFace.cry(1,1);
+				myFace.cry(1,1);
 
 				FB.drawCircle(Point(345,248),9,255, 255, 255, 0);
 				FB.drawCircle(Point(455,248),9,255, 255, 255, 0);
 			}
 			else if(key=='f' || key=='F') {
 				// MEREM
-				// myFace.eyesClosed();
+				myFace.eyesClosed();
 			}
 			else if(key=='q') {
 				quit = true;
@@ -96,16 +151,6 @@ int main() {
 				FB.drawCircle(Point(345,248),9,255, 255, 255, 0);
 				FB.drawCircle(Point(455,248),9,255, 255, 255, 0);
 			}
-			Curve face(face_vector,0.05);
-			Curve left_eyebrow(left_eyebrow_vector,0.05);
-			Curve right_eyebrow(right_eyebrow_vector,0.05);
-			Curve left_upper_eye(left_upper_eye_vector,0.05);
-			Curve right_upper_eye(right_upper_eye_vector,0.05);
-			Curve left_lower_eye(left_lower_eye_vector,0.05);
-			Curve right_lower_eye(right_lower_eye_vector,0.05);
-			Curve noseCurve(nose_vector, 0.05);
-			Curve upperLipCurve(upperLipVector, 0.05);
-			Curve bottomLipCurve(bottomLipVector, 0.05);
 			
 			FB.drawCurve(face, 255, 255, 255, 0);
 			FB.drawCurve(left_eyebrow, 0, 0, 0, 0);

@@ -26,7 +26,7 @@ class Face {
 		Face(map<string, vector<Point> > curves);
 		Face(const Face& f);
 		Face& operator=(const Face& f);
-		void addCurve(map<string, vector<Point> > curves);
+		
 		void moveHead(string dir, float d);
 		void moveNose(string dir, float d);
 		void smile(float dy);
