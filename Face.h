@@ -11,7 +11,6 @@ using namespace std;
 
 class Face {
 	public:
-		//head 0, nose 1, upper lip 2
 		Polygon head;
 		Polygon nose;
 		vector<Polygon> face;
