@@ -4,73 +4,87 @@ Face::Face() {
 
 }
 
-Face::Face(map<string, vector<Point> > polygons) {
+Face::Face(map<string, vector<Point> > curves) {
+	int d = 0.05;
 	vector<Point> temp;
-	temp = polygons.find("head")->second;
-	head = Polygon(temp);
+
+	temp = curves.find("head")->second;
+	head = Curve(temp, d);
 	face.push_back(head);
 	normal_exp.push_back(head);
 
 	temp.clear();
-	temp = polygons.find("nose")->second;
-	nose = Polygon(temp);
+	temp = curves.find("nose")->second;
+	nose = Curve(temp, d);
 	face.push_back(nose);
 	normal_exp.push_back(nose);
 
 	temp.clear();
-	temp = polygons.find("right_eyebrow")->second;
-	eyebrows.push_back(Polygon(temp));
-	face.push_back(Polygon(temp));
-	normal_exp.push_back(Polygon(temp));
+	temp = curves.find("right_eyebrow")->second;
+	eyebrows.push_back(Curve(temp, d));
+	face.push_back(Curve(temp, d));
+	normal_exp.push_back(Curve(temp, d));
 
 	temp.clear();
-	temp = polygons.find("left_eyebrow")->second;
-	eyebrows.push_back(Polygon(temp));
-	face.push_back(Polygon(temp));
-	normal_exp.push_back(Polygon(temp));
+	temp = curves.find("left_eyebrow")->second;
+	eyebrows.push_back(Curve(temp, d));
+	face.push_back(Curve(temp, d));
+	normal_exp.push_back(Curve(temp, d));
 
 	temp.clear();
-	temp = polygons.find("right_eye")->second;
-	eyes.push_back(Polygon(temp));
-	face.push_back(Polygon(temp));
-	normal_exp.push_back(Polygon(temp));
+	temp = curves.find("right_upper_eyelid")->second;
+	eyes.push_back(Curve(temp, d));
+	face.push_back(Curve(temp, d));
+	normal_exp.push_back(Curve(temp, d));
 
 	temp.clear();
-	temp = polygons.find("left_eye")->second;
-	eyes.push_back(Polygon(temp));
-	face.push_back(Polygon(temp));
-	normal_exp.push_back(Polygon(temp));
+	temp = curves.find("right_lower_eyelid")->second;
+	eyes.push_back(Curve(temp, d));
+	face.push_back(Curve(temp, d));
+	normal_exp.push_back(Curve(temp, d));
 
 	temp.clear();
-	temp = polygons.find("right_eyeball")->second;
-	eyeballs.push_back(Polygon(temp));
-	face.push_back(Polygon(temp));
-	normal_exp.push_back(Polygon(temp));
+	temp = curves.find("left_upper_eyelid")->second;
+	eyes.push_back(Curve(temp, d));
+	face.push_back(Curve(temp, d));
+	normal_exp.push_back(Curve(temp, d));
 
 	temp.clear();
-	temp = polygons.find("left_eyeball")->second;
-	eyeballs.push_back(Polygon(temp));
-	face.push_back(Polygon(temp));
-	normal_exp.push_back(Polygon(temp));
+	temp = curves.find("left_lower_eyelid")->second;
+	eyes.push_back(Curve(temp, d));
+	face.push_back(Curve(temp, d));
+	normal_exp.push_back(Curve(temp, d));
 
 	temp.clear();
-	temp = polygons.find("upper_lip")->second;
-	lips.push_back(Polygon(temp));
-	face.push_back(Polygon(temp));
-	normal_exp.push_back(Polygon(temp));
+	temp = curves.find("right_eyeball")->second;
+	eyeballs.push_back(Curve(temp, d));
+	face.push_back(Curve(temp, d));
+	normal_exp.push_back(Curve(temp, d));
 
 	temp.clear();
-	temp = polygons.find("lower_lip")->second;
-	lips.push_back(Polygon(temp));
-	face.push_back(Polygon(temp));
-	normal_exp.push_back(Polygon(temp));
+	temp = curves.find("left_eyeball")->second;
+	eyeballs.push_back(Curve(temp, d));
+	face.push_back(Curve(temp, d));
+	normal_exp.push_back(Curve(temp, d));
 
 	temp.clear();
-	temp = polygons.find("lip_tag")->second;
+	temp = curves.find("upper_lip")->second;
+	lips.push_back(Curve(temp, d));
+	face.push_back(Curve(temp, d));
+	normal_exp.push_back(Curve(temp, d));
+
+	temp.clear();
+	temp = curves.find("lower_lip")->second;
+	lips.push_back(Curve(temp, d));
+	face.push_back(Curve(temp, d));
+	normal_exp.push_back(Curve(temp, d));
+
+	temp.clear();
+	temp = curves.find("lip_tag")->second;
 	//tags.insert(std::pair<std::string, vector<Point>("lipTag", temp));
 
 	temp.clear();
-	temp = polygons.find("eye_tag")->second;
+	temp = curves.find("eye_tag")->second;
 	//tags.insert(std::pair<std::string, vector<Point>("eyeTag", temp));
 }
 
@@ -97,7 +111,7 @@ Face& Face::operator=(const Face& f) {
 }
 
 void Face::moveHead(string dir, float d) {
-	if (dir.compare("up")==0) {
+	/*if (dir.compare("up")==0) {
 		head.moveUp(d);
 	} else if (dir.compare("down")==0) {
 		head.moveDown(d);
@@ -105,11 +119,11 @@ void Face::moveHead(string dir, float d) {
 		head.moveRight(d);
 	} else if (dir.compare("left")==0) {
 		head.moveLeft(d);
-	}
+	}*/
 }
 
 void Face::moveNose(string dir, float d) {
-	if (dir.compare("up")==0) {
+	/*if (dir.compare("up")==0) {
 		nose.moveUp(d);
 	} else if (dir.compare("down")==0) {
 		nose.moveDown(d);
@@ -117,7 +131,7 @@ void Face::moveNose(string dir, float d) {
 		nose.moveRight(d);
 	} else if (dir.compare("left")==0) {
 		nose.moveLeft(d);
-	}
+	}*/
 }
 
 void Face::smile() {

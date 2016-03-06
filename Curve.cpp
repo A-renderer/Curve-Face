@@ -6,16 +6,70 @@ Curve::Curve(){
 }
 
 Curve::Curve(vector<Point> p, float d){
-	float t=0;
-
 	for (int i = 0; i< p.size(); i++){
 		points.push_back(p.at(i));
 	}
 
+	computeFinals();
+}
+
+Curve& Curve::operator=(const Curve& c){
+	this->d = c.d;
+	this->pFinal = c.pFinal;
+	this->points = c.points;
+	this->finals = c.finals;
+
+	return *this;
+}
+
+Curve::~Curve(){
+	points.clear();
+	finals.clear();
+}
+
+void Curve::moveRight(float dx) {
+	int i=0;
+	while(i < points.size()) {
+		points[i].x+=dx;
+		i++;
+	}
+	computeFinals();
+}
+
+void Curve::moveLeft(float dx) {
+	int i=0;
+	while(i < points.size()) {
+		points[i].x-=dx;
+		i++;
+	}
+	computeFinals();
+}
+
+
+void Curve::moveUp(float dy) {
+	int i=0;
+	while(i < points.size()) {
+		points[i].y-=dy;
+		i++;
+	}
+	computeFinals();
+}
+
+void Curve::moveDown(float dy) {
+	int i=0;
+	while(i < points.size()) {
+		points[i].y+=dy;
+		i++;
+	}
+	computeFinals();
+}
+
+void Curve::computeFinals(){
+	float t=0;
+	finals.clear();
+	finals.push_back(points.at(0));
 	pFinal.x = points.at(0).x;
 	pFinal.y = points.at(0).y;
-
-	finals.push_back(pFinal);
 
 	while (t<1){
 		pFinal = bezierCurve(t);
@@ -24,11 +78,6 @@ Curve::Curve(vector<Point> p, float d){
 	}
 
 	finals.push_back(points.at(points.size()-1));
-}
-
-Curve::~Curve(){
-	points.clear();
-	finals.clear();
 }
 
 Point Curve::quadraticBezier(float t){ 
@@ -98,3 +147,4 @@ vector<int> Curve::pascalTriangle(int n) {
 	}
 	return temp;
 }
+

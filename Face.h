@@ -3,6 +3,7 @@
 
 #include "Point.h"
 #include "Polygon.h"
+#include "Curve.h"
 #include <vector>
 #include <map>
 #include <string>
@@ -11,18 +12,18 @@ using namespace std;
 
 class Face {
 	public:
-		Polygon head;
-		Polygon nose;
-		vector<Polygon> face;
-		vector<Polygon> lips;
-		vector<Polygon> eyebrows;
-		vector<Polygon> eyes;
-		vector<Polygon> eyeballs;
-		vector<Polygon> normal_exp;
+		Curve head;
+		Curve nose;
+		vector<Curve> face; // the whole thing
+		vector<Curve> lips; // upper_lip and lower_lip
+		vector<Curve> eyebrows; // right_eyebrows and left_eyebrows
+		vector<Curve> eyes; // right_upper_eyelid, right_lower_eyelid, left_upper_eyelid and left_lower_eyelid
+		vector<Curve> eyeballs; // right_eyeball and left_eyeball
+		vector<Curve> normal_exp; // the whole thing when it's normal
 		map<string, vector<Point> > tags;
 
 		Face();
-		Face(map<string, vector<Point> > polygons);
+		Face(map<string, vector<Point> > curves);
 		Face(const Face& f);
 		Face& operator=(const Face& f);
 		
