@@ -3,66 +3,36 @@
 #include <termios.h>
 #include <fstream>
 #include "assets.h"
-#include "ThreeDimension.h"
 
 using namespace std;
 
 FrameBuffer FB;
 bool quit = false;
-vector<ThreeDimension> peta;
 int key;
 
 int kbhit(void);
 vector<Point> matrixToPolygon(int object[][2], int col);
-void drawMap();
-void redraw();
 void move(int key);
 
-Polygon map_border(matrixToPolygon(border,sizeof(border)/sizeof(*border)));
-ThreeDimension p_sumatra(matrixToPolygon(sumatra,sizeof(sumatra)/sizeof(*sumatra)));
-ThreeDimension p_kalimantan(matrixToPolygon(kalimantan,sizeof(kalimantan)/sizeof(*kalimantan)));
-ThreeDimension p_sulawesi(matrixToPolygon(sulawesi,sizeof(sulawesi)/sizeof(*sulawesi)));
-ThreeDimension p_papua(matrixToPolygon(papua,sizeof(papua)/sizeof(*papua)));
-ThreeDimension p_jawa(matrixToPolygon(jawa,sizeof(jawa)/sizeof(*jawa)));
-ThreeDimension kotak3D (matrixToPolygon(kotak,sizeof(kotak)/sizeof(*kotak)), 30);
 
 int main() {
-	// Adjust positions of the islands
-	system("clear");
-	FB.rasterScan(map_border,135, 206, 235, 0);
-	FB.draw3D(kotak3D,0,0,0,0);
-	FB.scanLine3D(kotak3D,0,50,0,0);
+	Point p0(100,500);
+	Point p1(600,200);
+	Point p2(1000,400);
 
-	int rotation = 0;
-	while(!quit){
-		if(kbhit()){
-			FB.rasterScan(map_border,135, 206, 235, 0);
-			FB.draw3D(kotak3D,0,0,0,0);
-			FB.scanLine3D(kotak3D,0,50,0,0);
-			
-			key=getchar();
-			//PANGGIL FUNGSI UNTUK REDRAW MOVEMENT
-			if(key=='a' && rotation <= 10) {
-				FB.rasterScan(map_border,135, 206, 235, 0);
-				FB.draw3D(kotak3D,0,0,0,0);
-				FB.scanLine3D(kotak3D,0,50,0,0);
-				kotak3D.rotate(2);
-				rotation++;
-			}
-			else if(key=='d' && rotation > 0) {
-				FB.rasterScan(map_border,135, 206, 235, 0);
-				FB.draw3D(kotak3D,0,0,0,0);
-				FB.scanLine3D(kotak3D,0,50,0,0);
-				kotak3D.rotate(-2);
-				rotation--;
-			}
-			else if(key=='q') {
-				quit = true;
-			}
-		}
+	vector<Point> p;
+	p.push_back(p0);
+	p.push_back(p1);
+	p.push_back(p2);
+	
+	system("clear");
+
+	for (int i = 0; i<p.size(); i++){
+		printf("main bro x=%d y=%d\n", p.at(i).x, p.at(i).y);
 	}
 
-	
+	Curve c(p,0.1);
+	FB.drawCurve(c, 255, 255, 255, 0);
 
 	return 0;
 }
@@ -99,21 +69,6 @@ vector<Point> matrixToPolygon(int object[][2], int col) {
 		points.push_back(Point(object[i][0],object[i][1]));
 	}
 	return points;
-}
-
-void drawMap() {
-	FB.drawPolygon(map_border,0, 255, 255,0);
-	FB.rasterScan(map_border,135, 206, 235, 0);
-	FB.draw3D(p_sumatra,0,100,0,0);
-	//FB.scanLine3D(p_sumatra,0,50,0,0);
-	FB.draw3D(p_kalimantan,0,100,0,0);
-	FB.scanLine3D(p_kalimantan,0,50,0,0);
-	FB.draw3D(p_sulawesi,0,100,0,0);
-	//FB.scanLine3D(p_sulawesi,0,50,0,0);
-	FB.draw3D(p_papua,0,100,0,0);
-	//FB.scanLine3D(p_papua,0,50,0,0);
-	FB.draw3D(p_jawa,0,100,0,0);
-	FB.scanLine3D(p_jawa,0,50,0,0);
 }
 
 void move(int key) {
