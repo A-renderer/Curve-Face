@@ -502,6 +502,16 @@ public:
 		}
 	}
 
+	void drawCurveLine(Curve c, int r, int g, int b, int a){
+		if (c.points.size()>2){
+			Point temp = c.points.at(0);
+			for (int i = 1; i < c.points.size(); i++){
+				drawLine(temp, c.points.at(i), r, g, b, a);
+				temp = c.points.at(i);
+			}
+		}
+	}
+
 private:
 	struct fb_var_screeninfo vinfo;
 	struct fb_fix_screeninfo finfo;

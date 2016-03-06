@@ -16,23 +16,28 @@ void move(int key);
 
 
 int main() {
-	Point pa(300,300);
-	Point pb(400, 60);
-	Point pc(500, 400);
-	Point pd(600, 60);
-	Point pe(700, 380);
+	Point pa(10,200);
+	Point pb(200, 500);
+	Point pc(400, 10);
+	Point pd(600, 510);
+	Point pe(800, 200);
 
 	vector<Point> p;
 	p.push_back(pa);
 	p.push_back(pb);
 	p.push_back(pc);
 	p.push_back(pd);
-	//p.push_back(pe);
+	p.push_back(pe);
 
 	system("clear");
 
-	Curve c(p,0.1);
+	Curve c(p,0.05);
+	for (int i = 0; i< c.finals.size(); i++){
+		printf("x = %d | y = %d\n", c.finals.at(i).x, c.finals.at(i).y);
+	}
+
 	FB.drawCurve(c, 255, 255, 255, 0);
+	FB.drawCurveLine(c, 255, 255, 0, 0);
 
 	return 0;
 }
