@@ -203,9 +203,9 @@ public:
 	        for (y=0; y<512; y++){
 	            location = (x+vinfo.xoffset) * (vinfo.bits_per_pixel/8) +
 	                           (y+vinfo.yoffset) * finfo.line_length;
-	            *(fbp + location) = 0;        // blue
-	            *(fbp + location + 1) = 0;      // green
-	            *(fbp + location + 2) = 0;      // red
+	            *(fbp + location) = 235;        // blue
+	            *(fbp + location + 1) = 206;      // green
+	            *(fbp + location + 2) = 135;      // red
 	            *(fbp + location + 3) = 0;      // transparency
 	        }
 	    }

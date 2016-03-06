@@ -42,6 +42,7 @@ int main() {
 	Curve upperLipCurve(upperLipVector, 0.05);
 	Curve bottomLipCurve(bottomLipVector, 0.05);
 
+	FB.clearscreen();
 
 	/*FB.drawCurve(c, 255, 255, 255, 0);
 	FB.drawCurveLine(c, 255, 255, 0, 0);*/
@@ -49,6 +50,36 @@ int main() {
 	FB.drawCurve(noseCurve, 255, 255, 255, 0);
 	FB.drawCurve(bottomLipCurve, 255, 255, 255, 0);
 	FB.drawCurve(upperLipCurve, 255, 255, 255, 0);
+   
+	FB.floodFill(400,250,135,206,235,255,222,173);
+	/*
+	while(!quit){
+		if(kbhit()){
+			key=getchar();
+			FB.cleararea(250,90,550,400);
+			//PANGGIL FUNGSI UNTUK REDRAW MOVEMENT
+			if(key=='a' || key=='A') {
+				// SMILE
+			}
+			else if(key=='s' || key=='S') {
+				// SAD
+			}
+			else if(key=='d' || key=='D') {
+				// MEREM
+			}
+			else if(key=='q') {
+				quit = true;
+			}
+			
+			FB.drawCurve(faceCurve, 255, 255, 255, 0);
+			FB.drawCurve(noseCurve, 255, 255, 255, 0);
+			FB.drawCurve(bottomLipCurve, 255, 255, 255, 0);
+			FB.drawCurve(upperLipCurve, 255, 255, 255, 0);
+			
+		}
+
+	}*/
+
 	return 0;
 }
 
@@ -84,45 +115,4 @@ vector<Point> matrixToPolygon(int object[][2], int col) {
 		points.push_back(Point(object[i][0],object[i][1]));
 	}
 	return points;
-}
-
-void move(int key) {
-	/*int i = 0;
-	if(key=='w'){
-		while(i < 10 && window.square.getMinY() > 0) {
-			window.moveUp(1);
-			i++;
-		}
-	}
-	else if(key=='a'){
-		while(i < 10 && window.square.getMinX() > 0) {
-			window.moveLeft(1);
-			i++;
-		}
-	}
-	else if(key=='d'){
-		while(i < 10 && window.square.getMaxX() < 599) {
-			window.moveRight(1);
-			i++;
-		}
-	}
-	else if(key=='s'){
-		while(i < 10 && window.square.getMaxY() < 400) {
-			window.moveDown(1);
-			i++;
-		}
-	}
-	else if(key=='q') {
-		// OTHER KEYS
-		quit=true;
-		system("clear");
-	}
-
-	if (key=='a' || key=='s' || key=='d' || key=='w'){
-		//menggambar ulang peta
-		drawMap();
-
-		//menggambar ulang window & view
-		FB.cleararea(view.P1.x,view.P1.y,view.P2.x,view.P2.y);
-	}*/
 }
