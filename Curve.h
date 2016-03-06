@@ -20,6 +20,9 @@ class Curve {
 
 	private:
 		Point quadraticBezier(float t);
+		Point cubicBezier(float t);
+		Point fourBezier(float t);
+		Point bezierCurve(float t);
 		
 };
 

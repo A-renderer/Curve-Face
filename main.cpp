@@ -16,20 +16,20 @@ void move(int key);
 
 
 int main() {
-	Point p0(100,500);
-	Point p1(600,200);
-	Point p2(1000,400);
+	Point pa(300,300);
+	Point pb(400, 60);
+	Point pc(500, 400);
+	Point pd(600, 60);
+	Point pe(700, 380);
 
 	vector<Point> p;
-	p.push_back(p0);
-	p.push_back(p1);
-	p.push_back(p2);
-	
-	system("clear");
+	p.push_back(pa);
+	p.push_back(pb);
+	p.push_back(pc);
+	p.push_back(pd);
+	//p.push_back(pe);
 
-	for (int i = 0; i<p.size(); i++){
-		printf("main bro x=%d y=%d\n", p.at(i).x, p.at(i).y);
-	}
+	system("clear");
 
 	Curve c(p,0.1);
 	FB.drawCurve(c, 255, 255, 255, 0);
