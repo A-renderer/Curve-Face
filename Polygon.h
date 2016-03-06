@@ -47,9 +47,14 @@ public:
 
 	void zoomOut(float k);
 
+	void setColor(int r, int g, int b, int t);
+
+	void mirror();
+
 	int n; //jumlah titik
 	vector<Point> e; //titik2 poligon
 	Point firePoint;
+	int r, g, b, t;
 
 private:
 

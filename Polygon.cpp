@@ -219,3 +219,17 @@ void Polygon::zoomOut(float k){
 		e[i].y = (e[i].y - midY) / k + midY;
 	}
 }
+
+void Polygon::setColor(int r, int g, int b, int t) {
+		this->r = r;
+		this->g = g;
+		this->b = b;
+		this->t = t;
+}
+
+void Polygon::mirror() {
+	int x = getMidX();
+	for(int i=0;i<n;i++) {
+		e[i].x = x + (x-e[i].x);
+	}
+}

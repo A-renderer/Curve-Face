@@ -2,9 +2,7 @@
 #define FACE
 
 #include "Point.h"
-#include "Eyes.h"
-#include "LowerHead.h"
-#include "Shape.h"
+#include "Polygon.h"
 #include <vector>
 #include <map>
 using namespace std;
@@ -12,18 +10,19 @@ using namespace std;
 class Face {
 	public:
 		//head 0, nose 1, upper lip 2
-		vector<Polygon> face;
+		vector<Point> face;
+		vector<Point> Nose;
+		vector<Polygon> lips;
 		vector<Polygon> eyebrows;
 		vector<Polygon> eyes;
 		vector<Polygon> eyeballs;
 		vector<Polygon> normal_exp;
 		LowerHead lowerHead;
 
-		float scale(Polygon pol);
-
 		Face();
-		Face(vector<Polygon> points, int a, int b, int c, float s);
+		Face(map polygons, int a, int b, int c, float s);
 		Face& operator=(const Face& f);
+		float scale(Polygon pol);
 };
 
 #endif
