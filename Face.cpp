@@ -4,7 +4,7 @@ Face::Face() {
 
 }
 
-Face::Face(map<string, vector<Point>> polygons) {
+Face::Face(map<string, vector<Point> > polygons) {
 	vector<Point> temp;
 	temp = polygons.find("head")->second;
 	head = Polygon(temp);
@@ -50,8 +50,8 @@ Face::Face(map<string, vector<Point>> polygons) {
 	temp.clear();
 	temp = polygons.find("nose")->second;
 	nose = Polygon(temp);
-	face.push_back(Nose);
-	normal_exp.push_back(Nose);
+	face.push_back(nose);
+	normal_exp.push_back(nose);
 
 	temp.clear();
 	temp = polygons.find("upper_lip")->second;
@@ -66,7 +66,7 @@ Face::Face(map<string, vector<Point>> polygons) {
 	normal_exp.push_back(Polygon(temp));	
 }
 
-Face::Face(const Face& f); {
+Face::Face(const Face& f) {
 	this->head = f.head;
 	this->nose = f.nose;
 	this->face = f.face;

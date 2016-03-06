@@ -12,7 +12,7 @@ class Face {
 		//head 0, nose 1, upper lip 2
 		Polygon head;
 		Polygon nose;
-		Vector<Polygon> face;
+		vector<Polygon> face;
 		vector<Polygon> lips;
 		vector<Polygon> eyebrows;
 		vector<Polygon> eyes;
@@ -20,7 +20,7 @@ class Face {
 		vector<Polygon> normal_exp;
 
 		Face();
-		Face(map<string, vector<Point> polygons);
+		Face(map<string, vector<Point> > polygons);
 		Face(const Face& f);
 		Face& operator=(const Face& f);
 		float scale(Polygon pol);
