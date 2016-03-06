@@ -16,36 +16,42 @@ void move(int key);
 
 
 int main() {
-	/*Point pa(10,200);
-	Point pb(200, 500);
-	Point pc(400, 10);
-	Point pd(600, 510);
-	Point pe(800, 200);
-
-	vector<Point> p;
-	p.push_back(pa);
-	p.push_back(pb);
-	p.push_back(pc);
-	p.push_back(pd);
-	p.push_back(pe);*/
-
-	vector<Point> faceVector = matrixToPolygon(face, sizeof(face)/sizeof(*face));
+	
+	vector<Point> face_vector =  matrixToPolygon(v_face,sizeof(v_face)/sizeof(*v_face));
+	vector<Point> left_eyebrow_vector =  matrixToPolygon(v_left_eyebrow,sizeof(v_left_eyebrow)/sizeof(*v_left_eyebrow));
+	vector<Point> right_eyebrow_vector =  matrixToPolygon(v_right_eyebrow,sizeof(v_right_eyebrow)/sizeof(*v_right_eyebrow));
+	vector<Point> left_upper_eye_vector =  matrixToPolygon(v_left_upper_eye,sizeof(v_left_upper_eye)/sizeof(*v_left_upper_eye));
+	vector<Point> right_upper_eye_vector =  matrixToPolygon(v_right_upper_eye,sizeof(v_right_upper_eye)/sizeof(*v_right_upper_eye));
+	vector<Point> left_lower_eye_vector =  matrixToPolygon(v_left_lower_eye,sizeof(v_left_lower_eye)/sizeof(*v_left_lower_eye));
+	vector<Point> right_lower_eye_vector =  matrixToPolygon(v_right_lower_eye,sizeof(v_right_lower_eye)/sizeof(*v_right_lower_eye));
 	vector<Point> noseVector = matrixToPolygon(nose, sizeof(nose)/sizeof(*nose));
 	vector<Point> upperLipVector = matrixToPolygon(upper_lip, sizeof(upper_lip)/sizeof(*upper_lip));
 	vector<Point> bottomLipVector = matrixToPolygon(bottom_lip, sizeof(bottom_lip)/sizeof(*bottom_lip));
 
 	system("clear");
 
-	/*Curve c(p,0.05);*/
-	Curve faceCurve(faceVector, 0.05);
+	Curve face(face_vector,0.05);
+	Curve left_eyebrow(left_eyebrow_vector,0.05);
+	Curve right_eyebrow(right_eyebrow_vector,0.05);
+	Curve left_upper_eye(left_upper_eye_vector,0.05);
+	Curve right_upper_eye(right_upper_eye_vector,0.05);
+	Curve left_lower_eye(left_lower_eye_vector,0.05);
+	Curve right_lower_eye(right_lower_eye_vector,0.05);
 	Curve noseCurve(noseVector, 0.05);
 	Curve upperLipCurve(upperLipVector, 0.05);
 	Curve bottomLipCurve(bottomLipVector, 0.05);
 
 
-	/*FB.drawCurve(c, 255, 255, 255, 0);
-	FB.drawCurveLine(c, 255, 255, 0, 0);*/
-	FB.drawCurve(faceCurve, 255, 255, 255, 0);
+	FB.drawCurve(face, 255, 255, 255, 0);
+	FB.drawCurveLine(face, 255, 255, 0, 0);
+	FB.drawCurve(left_eyebrow, 255, 255, 255, 0);
+	FB.drawCurve(right_eyebrow, 255, 255, 255, 0);
+	FB.drawCurve(left_upper_eye, 255, 255, 255, 0);
+	FB.drawCurve(right_upper_eye, 255, 255, 255, 0);
+	FB.drawCurve(left_lower_eye, 255, 255, 255, 0);
+	FB.drawCurve(right_lower_eye, 255, 255, 255, 0);
+	FB.drawCircle({345,248},9,255, 255, 255, 0);
+	FB.drawCircle({455,248},9,255, 255, 255, 0);
 	FB.drawCurve(noseCurve, 255, 255, 255, 0);
 	FB.drawCurve(bottomLipCurve, 255, 255, 255, 0);
 	FB.drawCurve(upperLipCurve, 255, 255, 255, 0);
