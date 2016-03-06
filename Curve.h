@@ -11,16 +11,15 @@ class Curve {
 	public:
 		Curve();
 		Curve(vector<Point> points, float d);
-		Curve(const Curve& c);
-		Curve& operator=(const Curve& c);
 		~Curve();
-
-		void quadraticBezier(float t)
 
 		vector<Point> points;
 		vector<Point> finals;
 		Point pFinal;
 		float d;
+
+	private:
+		Point quadraticBezier(float t);
 		
 };
 

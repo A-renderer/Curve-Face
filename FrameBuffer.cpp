@@ -1,6 +1,7 @@
 #include "Polygon.h"
 #include "Line.h"
 #include "ThreeDimension.h"
+#include "Curve.h"
 
 class FrameBuffer {
 public:
@@ -279,17 +280,6 @@ public:
 		}
 	}
 
-	/*void drawWindow(Window w, int r, int g, int b, int t){
-		drawPolygon(w.square,r,g,b,t);
-	}
-
-	void drawView(View v, int r, int g, int b, int t) {
-		if(!v.lines.empty()) {
-			for(int i=0; i<v.lines.size(); i++) {
-				drawLine(v.lines[i].src, v.lines[i].dest, r, g, b, t);
-			}	
-		}
-	}*/
 
 	void draw3D(ThreeDimension obj, int r, int g, int b, int t){
 		drawPolygon(obj.backside,r,g,b,t);
@@ -499,6 +489,16 @@ public:
 
 		for(int i=0; i<obj.p.size(); i++){
 			drawLine(obj.lines[i].src, obj.lines[i].dest, r, g, b, a);
+		}
+	}
+
+	void drawCurve(Curve c, int r, int g, int b, int a){
+		if (c.finals.size()>2){
+			Point temp = c.finals.at(0);
+			for (int i = 1; i < c.finals.size(); i++){
+				drawLine(temp, c.finals.at(i), r, g, b, a);
+				temp = c.finals.at(i);
+			}
 		}
 	}
 
