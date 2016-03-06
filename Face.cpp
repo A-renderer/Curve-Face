@@ -67,11 +67,11 @@ Face::Face(map<string, vector<Point> > polygons) {
 
 	temp.clear();
 	temp = polygons.find("lip_tag")->second;
-	tags.insert(std::pair<std::string, vector<Point>("lipTag", temp));
+	//tags.insert(std::pair<std::string, vector<Point>("lipTag", temp));
 
 	temp.clear();
 	temp = polygons.find("eye_tag")->second;
-	tags.insert(std::pair<std::string, vector<Point>("eyeTag", temp));
+	//tags.insert(std::pair<std::string, vector<Point>("eyeTag", temp));
 }
 
 Face::Face(const Face& f) {
@@ -134,8 +134,8 @@ void Face::smile() {
 
 
 	vector<Point> temp;
-	temp = polygons.find("lipTag")->second;
-	for (int i-0; i<temp.size(); i++) {
+	//temp = polygons.find("lipTag")->second;
+	for (int i=0; i<temp.size(); i++) {
 		//for (int i)
 	}
 }

@@ -32,9 +32,6 @@ int main() {
 	system("clear");
 
 	Curve c(p,0.05);
-	for (int i = 0; i< c.finals.size(); i++){
-		printf("x = %d | y = %d\n", c.finals.at(i).x, c.finals.at(i).y);
-	}
 
 	FB.drawCurve(c, 255, 255, 255, 0);
 	FB.drawCurveLine(c, 255, 255, 0, 0);

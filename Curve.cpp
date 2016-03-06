@@ -76,9 +76,12 @@ Point Curve::bezierCurve(float t){
 	Point p;
 	p.x = 0;
 	p.y = 0;
+
+	vector<int> coef = pascalTriangle(points.size()-1);
+
 	for (int i=0; i < points.size(); i++){
-		p.x += /*koef*/ * pow(1 - t, (points.size()-1-i)) * pow(t, i)* points.at(i).x;
-		p.y += /*koef*/ * pow(1 - t, (points.size()-1-i)) * pow(t, i)* points.at(i).y;
+		p.x += coef.at(i) * pow(1 - t, (points.size()-1-i)) * pow(t, i)* points.at(i).x;
+		p.y += coef.at(i) * pow(1 - t, (points.size()-1-i)) * pow(t, i)* points.at(i).y;
 	}
 
 	return p;
@@ -86,11 +89,11 @@ Point Curve::bezierCurve(float t){
 
 vector<int> Curve::pascalTriangle(int n) {
 	vector<int> temp;
-	for(i=0;i<=n;i++) {
+	for(int i = 0; i <= n; i++) {
 		int x=1;
-		for(int k=0;k<=i;k++) {
-		x = x * (i - k) / (k + 1);
-		temp.push_back(x);
+		for(int k = 0; k <= i; k++) {
+			if (i == n) temp.push_back(x);
+			x = x * (i - k) / (k + 1);
 		}
 	}
 	return temp;
