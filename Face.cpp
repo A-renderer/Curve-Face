@@ -63,20 +63,6 @@ Face::Face(map<string, vector<Point> > curves) {
 	face.push_back(Curve(temp, d));
 	normal_exp.push_back(Curve(temp, d));
 
-	//8
-	temp.clear();
-	temp = curves.find("right_eyeball")->second;
-	eyeballs.push_back(Curve(temp, d));
-	face.push_back(Curve(temp, d));
-	normal_exp.push_back(Curve(temp, d));
-
-	//9
-	temp.clear();
-	temp = curves.find("left_eyeball")->second;
-	eyeballs.push_back(Curve(temp, d));
-	face.push_back(Curve(temp, d));
-	normal_exp.push_back(Curve(temp, d));
-
 	//10
 	temp.clear();
 	temp = curves.find("upper_lip")->second;

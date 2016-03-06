@@ -9,76 +9,107 @@ using namespace std;
 FrameBuffer FB;
 bool quit = false;
 int key;
+Face myFace;
 
 int kbhit(void);
 vector<Point> matrixToPolygon(int object[][2], int col);
-void move(int key);
-
+void colorFace();
 
 int main() {
-	/*Point pa(10,200);
-	Point pb(200, 500);
-	Point pc(400, 10);
-	Point pd(600, 510);
-	Point pe(800, 200);
-
-	vector<Point> p;
-	p.push_back(pa);
-	p.push_back(pb);
-	p.push_back(pc);
-	p.push_back(pd);
-	p.push_back(pe);*/
-
-	vector<Point> faceVector = matrixToPolygon(face, sizeof(face)/sizeof(*face));
-	vector<Point> noseVector = matrixToPolygon(nose, sizeof(nose)/sizeof(*nose));
+	
+	// INIT
+	vector<Point> face_vector =  matrixToPolygon(v_face,sizeof(v_face)/sizeof(*v_face));
+	vector<Point> left_eyebrow_vector =  matrixToPolygon(v_left_eyebrow,sizeof(v_left_eyebrow)/sizeof(*v_left_eyebrow));
+	vector<Point> right_eyebrow_vector =  matrixToPolygon(v_right_eyebrow,sizeof(v_right_eyebrow)/sizeof(*v_right_eyebrow));
+	vector<Point> left_upper_eye_vector =  matrixToPolygon(v_left_upper_eye,sizeof(v_left_upper_eye)/sizeof(*v_left_upper_eye));
+	vector<Point> right_upper_eye_vector =  matrixToPolygon(v_right_upper_eye,sizeof(v_right_upper_eye)/sizeof(*v_right_upper_eye));
+	vector<Point> left_lower_eye_vector =  matrixToPolygon(v_left_lower_eye,sizeof(v_left_lower_eye)/sizeof(*v_left_lower_eye));
+	vector<Point> right_lower_eye_vector =  matrixToPolygon(v_right_lower_eye,sizeof(v_right_lower_eye)/sizeof(*v_right_lower_eye));
+	vector<Point> nose_vector = matrixToPolygon(nose, sizeof(nose)/sizeof(*nose));
 	vector<Point> upperLipVector = matrixToPolygon(upper_lip, sizeof(upper_lip)/sizeof(*upper_lip));
 	vector<Point> bottomLipVector = matrixToPolygon(bottom_lip, sizeof(bottom_lip)/sizeof(*bottom_lip));
 
 	system("clear");
 
-	/*Curve c(p,0.05);*/
-	Curve faceCurve(faceVector, 0.05);
-	Curve noseCurve(noseVector, 0.05);
-	Curve upperLipCurve(upperLipVector, 0.05);
-	Curve bottomLipCurve(bottomLipVector, 0.05);
+	map<string, vector<Point> > faceMap;
+	
+	faceMap.insert("head",face_vector);
+	faceMap.insert("nose",nose_vector);
+	faceMap.insert("right_eyebrow",right_eyebrow_vector);
+	faceMap.insert("left_eyebrow",left_eyebrow_vector);
+	faceMap.insert("right_upper_eyelid",right_upper_eye_vector);
+	faceMap.insert("right_lower_eyelid",right_lower_eye_vector);
+	faceMap.insert("left_upper_eyelid",left_upper_eye_vector);
+	faceMap.insert("left_lower_eyelid",left_lower_eye_vector);
+	faceMap.insert("upper_lip",upperLipVector);
+	faceMap.insert("lower_lip",bottomLipVector);
+	
+	myFace(faceMap);
 
+	// END OF INIT
 	FB.clearscreen();
 
-	/*FB.drawCurve(c, 255, 255, 255, 0);
-	FB.drawCurveLine(c, 255, 255, 0, 0);*/
-	FB.drawCurve(faceCurve, 255, 255, 255, 0);
-	FB.drawCurve(noseCurve, 255, 255, 255, 0);
-	FB.drawCurve(bottomLipCurve, 255, 255, 255, 0);
-	FB.drawCurve(upperLipCurve, 255, 255, 255, 0);
-   
-	FB.floodFill(400,250,135,206,235,255,222,173);
-	/*
 	while(!quit){
+		Curve face(face_vector,0.05);
+		Curve left_eyebrow(left_eyebrow_vector,0.05);
+		Curve right_eyebrow(right_eyebrow_vector,0.05);
+		Curve left_upper_eye(left_upper_eye_vector,0.05);
+		Curve right_upper_eye(right_upper_eye_vector,0.05);
+		Curve left_lower_eye(left_lower_eye_vector,0.05);
+		Curve right_lower_eye(right_lower_eye_vector,0.05);
+		Curve noseCurve(noseVector, 0.05);
+		Curve upperLipCurve(upperLipVector, 0.05);
+		Curve bottomLipCurve(bottomLipVector, 0.05);
+		
 		if(kbhit()){
 			key=getchar();
 			FB.cleararea(250,90,550,400);
 			//PANGGIL FUNGSI UNTUK REDRAW MOVEMENT
 			if(key=='a' || key=='A') {
 				// SMILE
+				myFace.smile(1);
+				
+				FB.drawCircle(Point(345,248),9,255, 255, 255, 0);
+				FB.drawCircle(Point(455,248),9,255, 255, 255, 0);
 			}
 			else if(key=='s' || key=='S') {
 				// SAD
+				myFace.sad(1);
+
+				FB.drawCircle(Point(345,248),9,255, 255, 255, 0);
+				FB.drawCircle(Point(455,248),9,255, 255, 255, 0);
 			}
 			else if(key=='d' || key=='D') {
+				// CRY
+				myFace.cry(1,1);
+
+				FB.drawCircle(Point(345,248),9,255, 255, 255, 0);
+				FB.drawCircle(Point(455,248),9,255, 255, 255, 0);
+			}
+			else if(key=='f' || key=='F') {
 				// MEREM
+				myFace.eyeclosed();
 			}
 			else if(key=='q') {
 				quit = true;
 			}
-			
-			FB.drawCurve(faceCurve, 255, 255, 255, 0);
-			FB.drawCurve(noseCurve, 255, 255, 255, 0);
-			FB.drawCurve(bottomLipCurve, 255, 255, 255, 0);
-			FB.drawCurve(upperLipCurve, 255, 255, 255, 0);
+
+			FB.drawCurve(face, 255, 255, 255, 0);
+			FB.drawCurve(left_eyebrow, 0, 0, 0, 0);
+			FB.drawCurve(right_eyebrow, 0, 0, 0, 0);
+			FB.drawCurve(left_upper_eye, 0, 0, 0, 0);
+			FB.drawCurve(right_upper_eye, 0, 0, 0, 0);
+			FB.drawCurve(left_lower_eye, 0, 0, 0, 0);
+			FB.drawCurve(right_lower_eye, 0, 0, 0, 0);
+			FB.drawCurve(noseCurve, 0, 0, 0, 0);
+			FB.drawCurve(bottomLipCurve, 128, 0, 0, 0);
+			FB.drawCurve(upperLipCurve, 128, 0, 0, 0);
+
+			colorFace();
 			
 		}
 
-	}*/
+	}
 
 	return 0;
 }
@@ -115,4 +146,16 @@ vector<Point> matrixToPolygon(int object[][2], int col) {
 		points.push_back(Point(object[i][0],object[i][1]));
 	}
 	return points;
+}
+
+void colorFace() {
+	FB.floodFill(400,250,135,206,235,255,222,173);
+
+	FB.floodFill(330,250,135,206,235,255,255,255);
+	FB.floodFill(342,250,135,206,235,0,0,0);
+	FB.floodFill(355,250,135,206,235,255,255,255);
+	
+	FB.floodFill(438,250,135,206,235,255,255,255);
+	FB.floodFill(450,250,135,206,235,0,0,0);
+	FB.floodFill(466,250,135,206,235,255,255,255);
 }
