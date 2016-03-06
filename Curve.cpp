@@ -18,9 +18,7 @@ Curve::Curve(vector<Point> p, float d){
 	finals.push_back(pFinal);
 
 	while (t<1){
-		if (points.size() == 3) pFinal = quadraticBezier(t);
-		else if (points.size() == 4) pFinal = cubicBezier(t);
-		else if (points.size() == 5) pFinal = fourBezier(t);
+		pFinal = bezierCurve(t);
 		finals.push_back(pFinal);
 		t+=d;
 	}
@@ -71,6 +69,7 @@ Point Curve::fourBezier(float t){
 				6 * pow(1 - t, 2) * pow(t,2) * points.at(2).y + 
 				4 * pow(1 - t, 1) * pow(t,3) * points.at(3).y +
 				1 * pow(1 - t, 0) * pow(t,4) * points.at(4).y);
+	return p;
 }
 
 Point Curve::bezierCurve(float t){
@@ -78,7 +77,8 @@ Point Curve::bezierCurve(float t){
 	p.x = 0;
 	p.y = 0;
 	for (int i=0; i < points.size(); i++){
-		//bingung iterasinya gimana kalo titik kontrolnya banyak hm
+		p.x += /*koef*/ * pow(1 - t, (points.size()-1-i)) * pow(t, i)* points.at(i).x;
+		p.y += /*koef*/ * pow(1 - t, (points.size()-1-i)) * pow(t, i)* points.at(i).y;
 	}
 
 	return p;
