@@ -83,3 +83,15 @@ Point Curve::bezierCurve(float t){
 
 	return p;
 }
+
+vector<int> Curve::pascalTriangle(int n) {
+	vector<int> temp;
+	for(i=0;i<=n;i++) {
+		int x=1;
+		for(int k=0;k<=i;k++) {
+		x = x * (i - k) / (k + 1);
+		temp.push_back(x);
+		}
+	}
+	return temp;
+}

@@ -23,6 +23,7 @@ class Curve {
 		Point cubicBezier(float t);
 		Point fourBezier(float t);
 		Point bezierCurve(float t);
+		vector<int> pascalTriangle(int n);
 		
 };
 
