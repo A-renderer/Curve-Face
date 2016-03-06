@@ -29,9 +29,9 @@ class Face {
 		
 		void moveHead(string dir, float d);
 		void moveNose(string dir, float d);
-		void smile();
-		void laugh();
-		void cry();
+		void smile(float dy);
+		void laugh(float dy);
+		void cry(float eye, float mouth);
 		void eyesClosed();
 };
 

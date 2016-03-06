@@ -16,11 +16,11 @@ void move(int key);
 
 
 int main() {
-	Point pa(10,200);
-	Point pb(200, 500);
-	Point pc(400, 10);
-	Point pd(600, 510);
-	Point pe(800, 200);
+	Point pa(200, 10);
+	Point pb(0, 100);
+	Point pc(200, 400);
+	Point pd(400, 100);
+	Point pe(200, 10);
 
 	vector<Point> p;
 	p.push_back(pa);
