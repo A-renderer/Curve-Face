@@ -101,6 +101,8 @@ Face::Face(const Face& f) {
     this->eyes = f.eyes;
     this->eyebrows = f.eyebrows;
     this->eyeballs = f.eyeballs;
+    this->normal_exp = f.normal_exp;
+   	this->tags = f.tags;
 }
 
 Face& Face::operator=(const Face& f) {
@@ -111,6 +113,8 @@ Face& Face::operator=(const Face& f) {
     this->eyes = f.eyes;
     this->eyebrows = f.eyebrows;
     this->eyeballs = f.eyeballs;
+   	this->normal_exp = f.normal_exp;
+   	this->tags = f.tags;
 
     return *this;
 }
@@ -161,7 +165,8 @@ void Face::smile(float dy) {
 			for (int j=0; j<curve.points.size(); j++) {
 				if (temp.at(i).x == curve.points.at(j).x &&
 					temp.at(i).x == curve.points.at(j).x) {
-						curve.points.at(i).y -= dy;
+						printf("masuk if smile \n");
+						curve.points.at(j).y -= dy;
 				}
 			}
 		}
@@ -191,7 +196,8 @@ void Face::laugh(float dy) {
 		for (int j=0; j<curve.points.size(); j++) {
 			if (temp.at(i).x == curve.points.at(j).x &&
 				temp.at(i).x == curve.points.at(j).x) {
-					curve.points.at(i).y += dy;
+					printf("masuk if laugh\n");
+					curve.points.at(j).y += dy;
 			}
 		}
 	}
@@ -217,7 +223,8 @@ void Face::cry(float eye, float mouth) {
 			for (int j=0; j<curve.points.size(); j++) {
 				if (temp.at(i).x == curve.points.at(j).x &&
 					temp.at(i).x == curve.points.at(j).x) {
-						curve.points.at(i).y += mouth;
+						printf("masuk if cry-mouth\n");
+						curve.points.at(j).y += mouth;
 				}
 			}
 		}
@@ -231,7 +238,8 @@ void Face::cry(float eye, float mouth) {
 			for (int j=0; j<curve.points.size(); j++) {
 				if (temp.at(i).x == curve.points.at(j).x &&
 					temp.at(i).x == curve.points.at(j).x) {
-						curve.points.at(i).y += eye;
+						printf("masuk if cry-eye\n");
+						curve.points.at(j).y += eye;
 				}
 			}
 		}
