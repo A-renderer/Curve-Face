@@ -5,11 +5,11 @@ Curve::Curve(){
 
 }
 
-Curve::Curve(vector<Point> p, float d){
+Curve::Curve(vector<Point> p, float delta){
 	for (int i = 0; i< p.size(); i++){
 		points.push_back(p.at(i));
 	}
-
+	d = delta;
 	computeFinals();
 }
 
