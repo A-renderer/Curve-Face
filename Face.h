@@ -5,6 +5,8 @@
 #include "Polygon.h"
 #include <vector>
 #include <map>
+#include <string>
+
 using namespace std;
 
 class Face {
@@ -23,7 +25,13 @@ class Face {
 		Face(map<string, vector<Point> > polygons);
 		Face(const Face& f);
 		Face& operator=(const Face& f);
-		float scale(Polygon pol);
+		
+		void moveHead(string dir, float d);
+		void moveNose(string dir, float d);
+		void smile();
+		void laugh();
+		void cry();
+		void eyesClosed();
 };
 
 #endif

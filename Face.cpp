@@ -87,3 +87,27 @@ Face& Face::operator=(const Face& f) {
 
     return *this;
 }
+
+void Face::moveHead(string dir, float d) {
+	if (dir.compare("up")==0) {
+		head.moveUp(d);
+	} else if (dir.compare("down")==0) {
+		head.moveDown(d);
+	} else if (dir.compare("right")==0) {
+		head.moveRight(d);
+	} else if (dir.compare("left")==0) {
+		head.moveLeft(d);
+	}
+}
+
+void Face::moveNose(string dir, float d) {
+	if (dir.compare("up")==0) {
+		nose.moveUp(d);
+	} else if (dir.compare("down")==0) {
+		nose.moveDown(d);
+	} else if (dir.compare("right")==0) {
+		nose.moveRight(d);
+	} else if (dir.compare("left")==0) {
+		nose.moveLeft(d);
+	}
+}
