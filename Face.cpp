@@ -112,7 +112,7 @@ void Face::moveNose(string dir, float d) {
 	}
 }
 
-void smile() {
+void Face::smile() {
 	face.clear();
 
 	face.push_back(normal_exp.at(0));
