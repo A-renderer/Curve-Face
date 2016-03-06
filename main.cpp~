@@ -30,25 +30,22 @@ int main() {
 	p.push_back(pe);*/
 
 	vector<Point> faceVector = matrixToPolygon(face, sizeof(face)/sizeof(*face));
-	vector<Point> noseVector = matrixToPolygon(nose, sizeof(nose)/sizeof(*nose));
 	vector<Point> upperLipVector = matrixToPolygon(upper_lip, sizeof(upper_lip)/sizeof(*upper_lip));
 	vector<Point> bottomLipVector = matrixToPolygon(bottom_lip, sizeof(bottom_lip)/sizeof(*bottom_lip));
 
 	system("clear");
 
 	/*Curve c(p,0.05);*/
-	Curve faceCurve(faceVector, 0.05);
-	Curve noseCurve(noseVector, 0.05);
-	Curve upperLipCurve(upperLipVector, 0.05);
-	Curve bottomLipCurve(bottomLipVector, 0.05);
+	Curve face(faceVector, 0.05);
+	Curve upperLip(upperLipVector, 0.05);
+	Curve bottomLip(bottomLipVector, 0.05);
 
 
 	/*FB.drawCurve(c, 255, 255, 255, 0);
 	FB.drawCurveLine(c, 255, 255, 0, 0);*/
-	FB.drawCurve(faceCurve, 255, 255, 255, 0);
-	FB.drawCurve(noseCurve, 255, 255, 255, 0);
-	FB.drawCurve(bottomLipCurve, 255, 255, 255, 0);
-	FB.drawCurve(upperLipCurve, 255, 255, 255, 0);
+	FB.drawCurve(bottomLip, 255, 255, 255, 0);
+	FB.drawCurve(upperLip, 255, 255, 255, 0);
+	FB.drawCurve(face, 255, 255, 255, 0);
 	return 0;
 }
 
