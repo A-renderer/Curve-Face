@@ -63,7 +63,15 @@ Face::Face(map<string, vector<Point> > polygons) {
 	temp = polygons.find("lower_lip")->second;
 	lips.push_back(Polygon(temp));
 	face.push_back(Polygon(temp));
-	normal_exp.push_back(Polygon(temp));	
+	normal_exp.push_back(Polygon(temp));
+
+	temp.clear();
+	temp = polygons.find("lip_tag")->second;
+	tags.insert(std::pair<std::string, vector<Point>("lipTag", temp));
+
+	temp.clear();
+	temp = polygons.find("eye_tag")->second;
+	tags.insert(std::pair<std::string, vector<Point>("eyeTag", temp));
 }
 
 Face::Face(const Face& f) {
@@ -124,7 +132,12 @@ void Face::smile() {
 	face.push_back(normal_exp.at(6));
 	face.push_back(normal_exp.at(7));
 
-	//trus yg berubah mulutnya
+
+	vector<Point> temp;
+	temp = polygons.find("lipTag")->second;
+	for (int i-0; i<temp.size(); i++) {
+		//for (int i)
+	}
 }
 
 void Face::laugh() {
@@ -150,7 +163,7 @@ void Face::cry() {
 	face.push_back(normal_exp.at(2));
 	face.push_back(normal_exp.at(3));
 
-	//yang berubah mulut dan mata
+	//yang berubah mulut dan mata; eyeball diilangin
 }
 
 void Face::eyesClosed() {
@@ -163,5 +176,5 @@ void Face::eyesClosed() {
 	face.push_back(normal_exp.at(8));
 	face.push_back(normal_exp.at(9));
 
-	//yang berubah matanya
+	//yang berubah matanya; eyeball diilangin
 }

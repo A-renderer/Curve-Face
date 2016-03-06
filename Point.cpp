@@ -25,3 +25,19 @@ Point& Point::operator=(const Point& p) { // OPERATOR=
 Point::~Point() { // DTOR
 
 }
+
+void Point::moveUp(float dy) {
+	y-=dy;
+}
+
+void Point::moveDown(float dy) {
+	y+=dy;	
+}
+
+void Point::moveLeft(float dx) {
+	x-=dx;
+}
+
+void Point::moveRight(float dx) {
+	x+=dx;		
+}

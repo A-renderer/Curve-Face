@@ -15,6 +15,14 @@ public:
 
 	~Point();
 
+	void moveUp(float dy);
+
+	void moveDown(float dy);
+
+	void moveLeft(float dx);
+
+	void moveRight(float dx);
+
 	int x;
 	int y;
 
