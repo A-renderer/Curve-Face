@@ -12,6 +12,12 @@ Face::Face(map<string, vector<Point> > polygons) {
 	normal_exp.push_back(head);
 
 	temp.clear();
+	temp = polygons.find("nose")->second;
+	nose = Polygon(temp);
+	face.push_back(nose);
+	normal_exp.push_back(nose);
+
+	temp.clear();
 	temp = polygons.find("right_eyebrow")->second;
 	eyebrows.push_back(Polygon(temp));
 	face.push_back(Polygon(temp));
@@ -46,12 +52,6 @@ Face::Face(map<string, vector<Point> > polygons) {
 	eyeballs.push_back(Polygon(temp));
 	face.push_back(Polygon(temp));
 	normal_exp.push_back(Polygon(temp));
-
-	temp.clear();
-	temp = polygons.find("nose")->second;
-	nose = Polygon(temp);
-	face.push_back(nose);
-	normal_exp.push_back(nose);
 
 	temp.clear();
 	temp = polygons.find("upper_lip")->second;
@@ -110,4 +110,17 @@ void Face::moveNose(string dir, float d) {
 	} else if (dir.compare("left")==0) {
 		nose.moveLeft(d);
 	}
+}
+
+void smile() {
+	face.clear();
+
+	face.push_back(normal_exp.at(0));
+	face.push_back(normal_exp.at(1));
+	face.push_back(normal_exp.at(2));
+	face.push_back(normal_exp.at(3));
+	face.push_back(normal_exp.at(4));
+	face.push_back(normal_exp.at(5));
+	face.push_back(normal_exp.at(6));
+	face.push_back(normal_exp.at(7));
 }
