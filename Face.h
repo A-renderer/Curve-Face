@@ -10,17 +10,18 @@ using namespace std;
 class Face {
 	public:
 		//head 0, nose 1, upper lip 2
-		vector<Point> face;
-		vector<Point> Nose;
+		Polygon head;
+		Polygon nose;
+		Vector<Polygon> face;
 		vector<Polygon> lips;
 		vector<Polygon> eyebrows;
 		vector<Polygon> eyes;
 		vector<Polygon> eyeballs;
 		vector<Polygon> normal_exp;
-		LowerHead lowerHead;
 
 		Face();
-		Face(map polygons, int a, int b, int c, float s);
+		Face(map<string, vector<Point> polygons);
+		Face(const Face& f);
 		Face& operator=(const Face& f);
 		float scale(Polygon pol);
 };
