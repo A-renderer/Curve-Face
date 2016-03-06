@@ -19,6 +19,7 @@ class Face {
 		vector<Polygon> eyes;
 		vector<Polygon> eyeballs;
 		vector<Polygon> normal_exp;
+		map<string, vector<Point> > tags;
 
 		Face();
 		Face(map<string, vector<Point> > polygons);
