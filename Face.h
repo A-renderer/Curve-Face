@@ -35,6 +35,7 @@ class Face {
 		void cry(float eye, float mouth);
 		void eyesClosed();
 		void wink();
+		void normalExpression();
 
 };
 

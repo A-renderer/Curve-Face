@@ -185,7 +185,7 @@ void Face::laugh(float dy) {
 	face.push_back(normal_exp.at(5));
 	face.push_back(normal_exp.at(6));
 	face.push_back(normal_exp.at(7));
-	
+
 	//yang berubah mulutnya	
 	vector<Point> temp;
 	temp = tags.find("laughTag")->second;
@@ -272,6 +272,21 @@ void Face::wink() {
 	face.push_back(normal_exp.at(3));
 	face.push_back(normal_exp.at(4));
 	face.push_back(normal_exp.at(5));
+	face.push_back(normal_exp.at(7));
+	face.push_back(normal_exp.at(8));
+	face.push_back(normal_exp.at(9));
+}
+
+void Face::normalExpression() {
+	face.clear();
+
+	face.push_back(normal_exp.at(0));
+	face.push_back(normal_exp.at(1));
+	face.push_back(normal_exp.at(2));
+	face.push_back(normal_exp.at(3));
+	face.push_back(normal_exp.at(4));
+	face.push_back(normal_exp.at(5));
+	face.push_back(normal_exp.at(6));
 	face.push_back(normal_exp.at(7));
 	face.push_back(normal_exp.at(8));
 	face.push_back(normal_exp.at(9));
