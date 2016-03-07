@@ -77,7 +77,12 @@ Face::Face(map<string, vector<Point> > curves) {
 	lips.push_back(Curve(temp, d));
 	face.push_back(Curve(temp, d));
 	normal_exp.push_back(Curve(temp, d));
-
+	
+	temp.clear();
+	temp = curves.find("hair")->second;
+	lips.push_back(Curve(temp, d));
+	face.push_back(Curve(temp, d));
+	normal_exp.push_back(Curve(temp, d));
 
 	temp.clear();
 	temp = curves.find("lip_tag")->second;
@@ -155,6 +160,7 @@ void Face::smile(float dy) {
 	face.push_back(normal_exp.at(5));
 	face.push_back(normal_exp.at(6));
 	face.push_back(normal_exp.at(7));
+	face.push_back(normal_exp.at(10));
 	
 	vector<Point> temp;
 	temp = tags.find("lipTag")->second;
@@ -184,7 +190,7 @@ void Face::laugh(float dy) {
 	face.push_back(normal_exp.at(5));
 	face.push_back(normal_exp.at(6));
 	face.push_back(normal_exp.at(7));
-
+	face.push_back(normal_exp.at(10));
 	//yang berubah mulutnya	
 	vector<Point> temp;
 	temp = tags.find("laughTag")->second;
@@ -208,6 +214,7 @@ void Face::cry(float eye, float mouth) {
 	face.push_back(normal_exp.at(1));
 	face.push_back(normal_exp.at(2));
 	face.push_back(normal_exp.at(3));
+	face.push_back(normal_exp.at(10));
 
 	//yang berubah mulut dan mata; eyeball diilangin
 
@@ -255,6 +262,7 @@ void Face::eyesClosed() {
 	face.push_back(normal_exp.at(7));
 	face.push_back(normal_exp.at(8));
 	face.push_back(normal_exp.at(9));
+	face.push_back(normal_exp.at(10));
 
 	//yang berubah matanya; eyeball diilangin
 }
@@ -271,21 +279,16 @@ void Face::wink() {
 	face.push_back(normal_exp.at(6));
 	face.push_back(normal_exp.at(8));
 	face.push_back(normal_exp.at(9));
+	face.push_back(normal_exp.at(10));
 }
 
 void Face::normalExpression() {
 	face.clear();
 
-	face.push_back(normal_exp.at(0));
-	face.push_back(normal_exp.at(1));
-	face.push_back(normal_exp.at(2));
-	face.push_back(normal_exp.at(3));
-	face.push_back(normal_exp.at(4));
-	face.push_back(normal_exp.at(5));
-	face.push_back(normal_exp.at(6));
-	face.push_back(normal_exp.at(7));
-	face.push_back(normal_exp.at(8));
-	face.push_back(normal_exp.at(9));
+	for(int i=0;i<normal_exp.size();i++) {
+		face.push_back(normal_exp.at(i));	
+	}
+
 }
 
 void Face::drawFace() {

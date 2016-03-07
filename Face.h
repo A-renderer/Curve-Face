@@ -14,6 +14,7 @@ class Face {
 	public:
 		Curve head;
 		Curve nose;
+		Curve hair;
 		vector<Curve> face; // the whole thing
 		vector<Curve> lips; // upper_lip and lower_lip
 		vector<Curve> eyebrows; // right_eyebrows and left_eyebrows

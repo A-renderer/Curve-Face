@@ -28,26 +28,14 @@ int main() {
 	vector<Point> nose_vector = matrixToPolygon(nose, sizeof(nose)/sizeof(*nose));
 	vector<Point> upperLipVector = matrixToPolygon(upper_lip, sizeof(upper_lip)/sizeof(*upper_lip));
 	vector<Point> bottomLipVector = matrixToPolygon(bottom_lip, sizeof(bottom_lip)/sizeof(*bottom_lip));
+	vector<Point> hair_vector =  matrixToPolygon(v_hair,sizeof(v_hair)/sizeof(*v_hair));
 	vector<Point> eyeTagVector = matrixToPolygon(eye_tag, sizeof(eye_tag)/sizeof(*eye_tag));
 	vector<Point> lipTagVector = matrixToPolygon(lip_tag, sizeof(lip_tag)/sizeof(*lip_tag));
 	vector<Point> mouthTagVector = matrixToPolygon(mouth_tag, sizeof(mouth_tag)/sizeof(*mouth_tag));
 
 	map<string, vector<Point> > faceMap;
-	
-	faceMap.insert(std::pair<std::string, vector<Point> >("head",face_vector));
-	faceMap.insert(std::pair<std::string, vector<Point> >("nose",nose_vector));
-	faceMap.insert(std::pair<std::string, vector<Point> >("right_eyebrow",right_eyebrow_vector));
-	faceMap.insert(std::pair<std::string, vector<Point> >("left_eyebrow",left_eyebrow_vector));
-	faceMap.insert(std::pair<std::string, vector<Point> >("right_upper_eyelid",right_upper_eye_vector));
-	faceMap.insert(std::pair<std::string, vector<Point> >("right_lower_eyelid",right_lower_eye_vector));
-	faceMap.insert(std::pair<std::string, vector<Point> >("left_upper_eyelid",left_upper_eye_vector));
-	faceMap.insert(std::pair<std::string, vector<Point> >("left_lower_eyelid",left_lower_eye_vector));
-	faceMap.insert(std::pair<std::string, vector<Point> >("upper_lip",upperLipVector));
-	faceMap.insert(std::pair<std::string, vector<Point> >("lower_lip",bottomLipVector));
-	faceMap.insert(std::pair<std::string, vector<Point> >("lip_tag",lipTagVector));
-	faceMap.insert(std::pair<std::string, vector<Point> >("laugh_tag",mouthTagVector));
-	faceMap.insert(std::pair<std::string, vector<Point> >("eye_tag",eyeTagVector));
-	
+
+
 	int d = 0.01;
 
 	Curve face(face_vector,d);
@@ -60,6 +48,7 @@ int main() {
 	Curve noseCurve(nose_vector, d);
 	Curve upperLipCurve(upperLipVector, d);
 	Curve bottomLipCurve(bottomLipVector, d);
+	Curve hair(hair_vector,d);
 
 
 	// Face myFace(faceMap); // >>>>> NGEBUG COOOY <<<<< //
@@ -103,6 +92,10 @@ int main() {
 	myFace.lips.push_back(bottomLipCurve);
 	myFace.face.push_back(myFace.lips.at(1));
 	myFace.normal_exp.push_back(myFace.lips.at(1));
+
+	myFace.hair = hair;
+	myFace.face.push_back(myFace.hair);
+	myFace.normal_exp.push_back(myFace.hair);
 
 	myFace.tags.insert(std::pair<std::string, vector<Point> >("lipTag", lipTagVector));
 	myFace.tags.insert(std::pair<std::string, vector<Point> >("laughTag", mouthTagVector));
@@ -216,4 +209,5 @@ void colorFace() {
 	FB.floodFill(438,250,135,206,235,255,255,255);
 	FB.floodFill(450,250,135,206,235,0,0,0);
 	FB.floodFill(466,250,135,206,235,255,255,255);
+	FB.floodFill(400,170,135,206,235,0,0,0);
 }
