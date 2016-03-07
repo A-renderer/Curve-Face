@@ -121,7 +121,7 @@ int main() {
 			//PANGGIL FUNGSI UNTUK REDRAW MOVEMENT
 			if(key=='a' || key=='A') {
 				// SMILE
-				myFace.smile(1);
+				myFace.smile(10);
 				
 				FB.drawCircle(Point(345,248),9,255, 255, 255, 0);
 				FB.drawCircle(Point(455,248),9,255, 255, 255, 0);
