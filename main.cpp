@@ -128,14 +128,14 @@ int main() {
 			}
 			else if(key=='s' || key=='S') {
 				// LAUGH
-				myFace.laugh(1);
+				myFace.laugh(10);
 
 				FB.drawCircle(Point(345,248),9,255, 255, 255, 0);
 				FB.drawCircle(Point(455,248),9,255, 255, 255, 0);
 			}
 			else if(key=='d' || key=='D') {
 				// CRY
-				myFace.cry(1,1);
+				myFace.cry(10,10);
 
 				FB.drawCircle(Point(345,248),9,255, 255, 255, 0);
 				FB.drawCircle(Point(455,248),9,255, 255, 255, 0);
@@ -151,18 +151,7 @@ int main() {
 				FB.drawCircle(Point(345,248),9,255, 255, 255, 0);
 				FB.drawCircle(Point(455,248),9,255, 255, 255, 0);
 			}
-			
-			FB.drawCurve(face, 255, 255, 255, 0);
-			FB.drawCurve(left_eyebrow, 0, 0, 0, 0);
-			FB.drawCurve(right_eyebrow, 0, 0, 0, 0);
-			FB.drawCurve(left_upper_eye, 0, 0, 0, 0);
-			FB.drawCurve(right_upper_eye, 0, 0, 0, 0);
-			FB.drawCurve(left_lower_eye, 0, 0, 0, 0);
-			FB.drawCurve(right_lower_eye, 0, 0, 0, 0);
-			FB.drawCurve(noseCurve, 0, 0, 0, 0);
-			FB.drawCurve(bottomLipCurve, 128, 0, 0, 0);
-			FB.drawCurve(upperLipCurve, 128, 0, 0, 0);
-
+			myFace.color();
 			colorFace();
 			
 		}

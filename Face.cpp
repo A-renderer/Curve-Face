@@ -1,4 +1,5 @@
 #include "Face.h"
+#include "FrameBuffer.cpp"
 
 Face::Face() {
 
@@ -260,4 +261,20 @@ void Face::eyesClosed() {
 	face.push_back(normal_exp.at(9));
 
 	//yang berubah matanya; eyeball diilangin
+}
+
+void Face::color() {
+	FrameBuffer FB;
+
+	FB.drawCurve(face.at(0), 255, 255, 255, 0);
+	FB.drawCurve(face.at(1), 0, 0, 0, 0);
+	FB.drawCurve(face.at(2), 0, 0, 0, 0);
+	FB.drawCurve(face.at(3), 0, 0, 0, 0);
+	FB.drawCurve(face.at(4), 0, 0, 0, 0);
+	FB.drawCurve(face.at(5), 0, 0, 0, 0);
+	FB.drawCurve(face.at(6), 0, 0, 0, 0);
+	FB.drawCurve(face.at(7), 0, 0, 0, 0);
+	FB.drawCurve(face.at(8), 128, 0, 0, 0);
+	FB.drawCurve(face.at(9), 128, 0, 0, 0);
+
 }
