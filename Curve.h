@@ -24,8 +24,9 @@ class Curve {
 		Point pFinal;
 		float d;
 
-	private:
 		void computeFinals();
+		
+	private:
 		Point quadraticBezier(float t);
 		Point cubicBezier(float t);
 		Point fourBezier(float t);

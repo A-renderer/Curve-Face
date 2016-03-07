@@ -63,14 +63,14 @@ Face::Face(map<string, vector<Point> > curves) {
 	face.push_back(Curve(temp, d));
 	normal_exp.push_back(Curve(temp, d));
 
-	//10
+	//8
 	temp.clear();
 	temp = curves.find("upper_lip")->second;
 	lips.push_back(Curve(temp, d));
 	face.push_back(Curve(temp, d));
 	normal_exp.push_back(Curve(temp, d));
 
-	//11
+	//9
 	temp.clear();
 	temp = curves.find("lower_lip")->second;
 	lips.push_back(Curve(temp, d));
@@ -150,9 +150,7 @@ void Face::smile(float dy) {
 	face.push_back(normal_exp.at(5));
 	face.push_back(normal_exp.at(6));
 	face.push_back(normal_exp.at(7));
-	face.push_back(normal_exp.at(8));
-	face.push_back(normal_exp.at(9));
-
+	
 	vector<Point> temp;
 	temp = tags.find("lipTag")->second;
 	for (int x=0; x<2; x++) {
@@ -165,6 +163,7 @@ void Face::smile(float dy) {
 				}
 			}
 		}
+		curve.computeFinals();
 		face.push_back(curve);
 	}
 }
@@ -180,9 +179,7 @@ void Face::laugh(float dy) {
 	face.push_back(normal_exp.at(5));
 	face.push_back(normal_exp.at(6));
 	face.push_back(normal_exp.at(7));
-	face.push_back(normal_exp.at(8));
-	face.push_back(normal_exp.at(9));
-
+	
 	//yang berubah mulutnya	
 	vector<Point> temp;
 	temp = tags.find("laughTag")->second;
@@ -195,7 +192,7 @@ void Face::laugh(float dy) {
 			}
 		}
 	}
-
+	curve.computeFinals();
 	face.push_back(curve);
 }
 
@@ -221,6 +218,7 @@ void Face::cry(float eye, float mouth) {
 				}
 			}
 		}
+		curve.computeFinals();
 		face.push_back(curve);
 	}
 
@@ -235,6 +233,8 @@ void Face::cry(float eye, float mouth) {
 				}
 			}
 		}
+
+		curve.computeFinals();
 		face.push_back(curve);
 	}
 }
@@ -248,8 +248,8 @@ void Face::eyesClosed() {
 	face.push_back(normal_exp.at(3));
 	face.push_back(normal_exp.at(5));
 	face.push_back(normal_exp.at(7));
-	face.push_back(normal_exp.at(10));
-	face.push_back(normal_exp.at(11));
+	face.push_back(normal_exp.at(8));
+	face.push_back(normal_exp.at(9));
 
 	//yang berubah matanya; eyeball diilangin
 }
