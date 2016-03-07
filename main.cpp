@@ -48,17 +48,18 @@ int main() {
 	faceMap.insert(std::pair<std::string, vector<Point> >("laugh_tag",mouthTagVector));
 	faceMap.insert(std::pair<std::string, vector<Point> >("eye_tag",eyeTagVector));
 	
+	int d = 0.01;
 
-	Curve face(face_vector,0.05);
-	Curve left_eyebrow(left_eyebrow_vector,0.05);
-	Curve right_eyebrow(right_eyebrow_vector,0.05);
-	Curve left_upper_eye(left_upper_eye_vector,0.05);
-	Curve right_upper_eye(right_upper_eye_vector,0.05);
-	Curve left_lower_eye(left_lower_eye_vector,0.05);
-	Curve right_lower_eye(right_lower_eye_vector,0.05);
-	Curve noseCurve(nose_vector, 0.05);
-	Curve upperLipCurve(upperLipVector, 0.05);
-	Curve bottomLipCurve(bottomLipVector, 0.05);
+	Curve face(face_vector,d);
+	Curve left_eyebrow(left_eyebrow_vector,d);
+	Curve right_eyebrow(right_eyebrow_vector,d);
+	Curve left_upper_eye(left_upper_eye_vector,d);
+	Curve right_upper_eye(right_upper_eye_vector,d);
+	Curve left_lower_eye(left_lower_eye_vector,d);
+	Curve right_lower_eye(right_lower_eye_vector,d);
+	Curve noseCurve(nose_vector, d);
+	Curve upperLipCurve(upperLipVector, d);
+	Curve bottomLipCurve(bottomLipVector, d);
 
 
 	// Face myFace(faceMap); // >>>>> NGEBUG COOOY <<<<< //
