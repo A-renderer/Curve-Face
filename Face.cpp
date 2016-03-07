@@ -77,7 +77,12 @@ Face::Face(map<string, vector<Point> > curves) {
 	lips.push_back(Curve(temp, d));
 	face.push_back(Curve(temp, d));
 	normal_exp.push_back(Curve(temp, d));
-
+	
+	temp.clear();
+	temp = curves.find("hair")->second;
+	lips.push_back(Curve(temp, d));
+	face.push_back(Curve(temp, d));
+	normal_exp.push_back(Curve(temp, d));
 
 	temp.clear();
 	temp = curves.find("lip_tag")->second;

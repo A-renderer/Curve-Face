@@ -28,6 +28,7 @@ int main() {
 	vector<Point> nose_vector = matrixToPolygon(nose, sizeof(nose)/sizeof(*nose));
 	vector<Point> upperLipVector = matrixToPolygon(upper_lip, sizeof(upper_lip)/sizeof(*upper_lip));
 	vector<Point> bottomLipVector = matrixToPolygon(bottom_lip, sizeof(bottom_lip)/sizeof(*bottom_lip));
+	vector<Point> hair_vector =  matrixToPolygon(v_hair,sizeof(v_hair)/sizeof(*v_hair));
 	vector<Point> eyeTagVector = matrixToPolygon(eye_tag, sizeof(eye_tag)/sizeof(*eye_tag));
 	vector<Point> lipTagVector = matrixToPolygon(lip_tag, sizeof(lip_tag)/sizeof(*lip_tag));
 	vector<Point> mouthTagVector = matrixToPolygon(mouth_tag, sizeof(mouth_tag)/sizeof(*mouth_tag));
@@ -47,7 +48,7 @@ int main() {
 	faceMap.insert(std::pair<std::string, vector<Point> >("lip_tag",lipTagVector));
 	faceMap.insert(std::pair<std::string, vector<Point> >("laugh_tag",mouthTagVector));
 	faceMap.insert(std::pair<std::string, vector<Point> >("eye_tag",eyeTagVector));
-	
+	faceMap.insert(std::pair<std::string, vector<Point> >("hair",hair_vector));
 
 	Curve face(face_vector,0.05);
 	Curve left_eyebrow(left_eyebrow_vector,0.05);
@@ -59,6 +60,7 @@ int main() {
 	Curve noseCurve(nose_vector, 0.05);
 	Curve upperLipCurve(upperLipVector, 0.05);
 	Curve bottomLipCurve(bottomLipVector, 0.05);
+	Curve hair(hair_vector,0.05);
 
 
 	// Face myFace(faceMap); // >>>>> NGEBUG COOOY <<<<< //
@@ -70,6 +72,10 @@ int main() {
 	myFace.nose = noseCurve;
 	myFace.face.push_back(myFace.nose);
 	myFace.normal_exp.push_back(myFace.nose);
+	
+	myFace.hair = hair;
+	myFace.face.push_back(myFace.hair);
+	myFace.normal_exp.push_back(myFace.hair);
 
 	myFace.eyebrows.push_back(right_eyebrow);
 	myFace.face.push_back(myFace.eyebrows.at(0));
@@ -215,4 +221,5 @@ void colorFace() {
 	FB.floodFill(438,250,135,206,235,255,255,255);
 	FB.floodFill(450,250,135,206,235,0,0,0);
 	FB.floodFill(466,250,135,206,235,255,255,255);
+	FB.floodFill(400,170,135,206,235,0,0,0);
 }
