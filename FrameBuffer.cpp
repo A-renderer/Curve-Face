@@ -11,7 +11,7 @@ public:
 	        perror("Error: cannot open framebuffer device");
 	        exit(1);
 	    }
-	    printf("The framebuffer device was opened successfully.\n");
+	    // printf("The framebuffer device was opened successfully.\n");
 
 	    // Get fixed screen information
 	    if (ioctl(fbfd, FBIOGET_FSCREENINFO, &finfo) == -1) {
@@ -25,7 +25,7 @@ public:
 	        exit(3);
 	    }
 
-	    printf("%dx%d, %dbpp\n", vinfo.xres, vinfo.yres, vinfo.bits_per_pixel);
+	    // printf("%dx%d, %dbpp\n", vinfo.xres, vinfo.yres, vinfo.bits_per_pixel);
 
 	    // Figure out the size of the screen in bytes
 	    int screensize = vinfo.xres * vinfo.yres * vinfo.bits_per_pixel / 8;
@@ -36,7 +36,7 @@ public:
 	        perror("Error: failed to map framebuffer device to memory");
 	        exit(4);
 	    }
-	    printf("The framebuffer device was mapped to memory successfully.\n");
+	    // printf("The framebuffer device was mapped to memory successfully.\n");
 	}
 
 	~FrameBuffer() {

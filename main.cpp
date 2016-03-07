@@ -145,13 +145,16 @@ int main() {
 				myFace.eyesClosed();
 			}
 			else if(key=='q') {
+				// QUIT
+				FB.drawCircle(Point(345,248),9,255, 255, 255, 0);
+				FB.drawCircle(Point(455,248),9,255, 255, 255, 0);
 				quit = true;
 			}
 			else {
 				FB.drawCircle(Point(345,248),9,255, 255, 255, 0);
 				FB.drawCircle(Point(455,248),9,255, 255, 255, 0);
 			}
-			myFace.color();
+			myFace.drawFace();
 			colorFace();
 			
 		}

@@ -6,7 +6,7 @@ Face::Face() {
 }
 
 Face::Face(map<string, vector<Point> > curves) {
-	int d = 0.05;
+	int d = 0.01;
 	vector<Point> temp;
 
 	//0
@@ -164,7 +164,6 @@ void Face::smile(float dy) {
 			for (int j=0; j<curve.points.size(); j++) {
 				if (temp.at(i).x == curve.points.at(j).x &&
 					temp.at(i).x == curve.points.at(j).x) {
-						printf("masuk if smile \n");
 						curve.points.at(j).y -= dy;
 				}
 			}
@@ -194,7 +193,6 @@ void Face::laugh(float dy) {
 		for (int j=0; j<curve.points.size(); j++) {
 			if (temp.at(i).x == curve.points.at(j).x &&
 				temp.at(i).x == curve.points.at(j).x) {
-					printf("masuk if laugh\n");
 					curve.points.at(j).y += dy;
 			}
 		}
@@ -221,7 +219,6 @@ void Face::cry(float eye, float mouth) {
 			for (int j=0; j<curve.points.size(); j++) {
 				if (temp.at(i).x == curve.points.at(j).x &&
 					temp.at(i).x == curve.points.at(j).x) {
-						printf("masuk if cry-mouth\n");
 						curve.points.at(j).y += mouth;
 				}
 			}
@@ -237,7 +234,6 @@ void Face::cry(float eye, float mouth) {
 			for (int j=0; j<curve.points.size(); j++) {
 				if (temp.at(i).x == curve.points.at(j).x &&
 					temp.at(i).x == curve.points.at(j).x) {
-						printf("masuk if cry-eye\n");
 						curve.points.at(j).y += eye;
 				}
 			}
@@ -263,18 +259,9 @@ void Face::eyesClosed() {
 	//yang berubah matanya; eyeball diilangin
 }
 
-void Face::color() {
+void Face::drawFace() {
 	FrameBuffer FB;
-
-	FB.drawCurve(face.at(0), 255, 255, 255, 0);
-	FB.drawCurve(face.at(1), 0, 0, 0, 0);
-	FB.drawCurve(face.at(2), 0, 0, 0, 0);
-	FB.drawCurve(face.at(3), 0, 0, 0, 0);
-	FB.drawCurve(face.at(4), 0, 0, 0, 0);
-	FB.drawCurve(face.at(5), 0, 0, 0, 0);
-	FB.drawCurve(face.at(6), 0, 0, 0, 0);
-	FB.drawCurve(face.at(7), 0, 0, 0, 0);
-	FB.drawCurve(face.at(8), 128, 0, 0, 0);
-	FB.drawCurve(face.at(9), 128, 0, 0, 0);
-
+	for(int i=0; i< face.size(); i++) {
+		FB.drawCurve(face.at(i), 0, 0, 0, 0);
+	}
 }
