@@ -35,8 +35,7 @@ int main() {
 
 	map<string, vector<Point> > faceMap;
 
-
-	int d = 0.01;
+	float d = 0.02;
 
 	Curve face(face_vector,d);
 	Curve left_eyebrow(left_eyebrow_vector,d);
@@ -48,59 +47,58 @@ int main() {
 	Curve noseCurve(nose_vector, d);
 	Curve upperLipCurve(upperLipVector, d);
 	Curve bottomLipCurve(bottomLipVector, d);
-	Curve hair(hair_vector,d);
+	Curve hairCurve(hair_vector,d);
 
-
-	// Face myFace(faceMap); // >>>>> NGEBUG COOOY <<<<< //
 	Face myFace;
+	//0
 	myFace.head = face;
 	myFace.face.push_back(myFace.head);
 	myFace.normal_exp.push_back(myFace.head);
-
+	//1
 	myFace.nose = noseCurve;
 	myFace.face.push_back(myFace.nose);
 	myFace.normal_exp.push_back(myFace.nose);
-
+	//2
 	myFace.eyebrows.push_back(right_eyebrow);
 	myFace.face.push_back(myFace.eyebrows.at(0));
 	myFace.normal_exp.push_back(myFace.eyebrows.at(0));
-
+	//3
 	myFace.eyebrows.push_back(left_eyebrow);
 	myFace.face.push_back(myFace.eyebrows.at(1));
 	myFace.normal_exp.push_back(myFace.eyebrows.at(1));
-
+	//4
 	myFace.eyes.push_back(right_upper_eye);
 	myFace.face.push_back(myFace.eyes.at(0));
 	myFace.normal_exp.push_back(myFace.eyes.at(0));
-
+	//5
 	myFace.eyes.push_back(right_lower_eye);
 	myFace.face.push_back(myFace.eyes.at(1));
 	myFace.normal_exp.push_back(myFace.eyes.at(1));
-
+	//6
 	myFace.eyes.push_back(left_upper_eye);
 	myFace.face.push_back(myFace.eyes.at(2));
 	myFace.normal_exp.push_back(myFace.eyes.at(2));
-
+	//7
 	myFace.eyes.push_back(left_lower_eye);
 	myFace.face.push_back(myFace.eyes.at(3));
 	myFace.normal_exp.push_back(myFace.eyes.at(3));
-
+	//8
 	myFace.lips.push_back(upperLipCurve);
 	myFace.face.push_back(myFace.lips.at(0));
 	myFace.normal_exp.push_back(myFace.lips.at(0));
-
+	//9
 	myFace.lips.push_back(bottomLipCurve);
 	myFace.face.push_back(myFace.lips.at(1));
 	myFace.normal_exp.push_back(myFace.lips.at(1));
-
-	myFace.hair = hair;
+	//10
+	myFace.hair = hairCurve;
 	myFace.face.push_back(myFace.hair);
 	myFace.normal_exp.push_back(myFace.hair);
 
 	myFace.tags.insert(std::pair<std::string, vector<Point> >("lipTag", lipTagVector));
 	myFace.tags.insert(std::pair<std::string, vector<Point> >("laughTag", mouthTagVector));
 	myFace.tags.insert(std::pair<std::string, vector<Point> >("eyeTag", eyeTagVector));
-
+	
 
 	// --------------END OF INIT-------------- //
 
@@ -111,7 +109,7 @@ int main() {
 	while(!quit){
 		if(kbhit()){
 			key=getchar();
-			FB.cleararea(250,90,550,400);
+			FB.cleararea(200,90,600,500);
 			//PANGGIL FUNGSI UNTUK REDRAW MOVEMENT
 			if(key=='a' || key=='A') {
 				// SMILE
@@ -122,17 +120,32 @@ int main() {
 			}
 			else if(key=='s' || key=='S') {
 				// LAUGH
-				myFace.laugh(10);
+				myFace.laugh(20);
 
 				FB.drawCircle(Point(345,248),9,255, 255, 255, 0);
 				FB.drawCircle(Point(455,248),9,255, 255, 255, 0);
 			}
 			else if(key=='d' || key=='D') {
 				// CRY
-				myFace.cry(10,10);
+				myFace.cry(10,25);
 
-				FB.drawCircle(Point(345,248),9,255, 255, 255, 0);
-				FB.drawCircle(Point(455,248),9,255, 255, 255, 0);
+				FB.drawCircle(Point(345,252),9,255, 255, 255, 0);
+				FB.drawCircle(Point(455,252),9,255, 255, 255, 0);
+
+				//nangis kiri
+				FB.drawCircle(Point(340,265),2,205,206,235,0);
+				FB.drawCircle(Point(338,275),2,205,206,235,0);
+				FB.drawCircle(Point(335,285),2,205,206,235,0);
+				FB.drawCircle(Point(332,295),2,205,206,235,0);
+				FB.drawCircle(Point(330,305),2,205,206,235,0);
+
+				//nangis kanan
+				FB.drawCircle(Point(460,265),2,205,206,235,0);
+				FB.drawCircle(Point(462,275),2,205,206,235,0);
+				FB.drawCircle(Point(465,285),2,205,206,235,0);
+				FB.drawCircle(Point(468,295),2,205,206,235,0);
+				FB.drawCircle(Point(470,305),2,205,206,235,0);
+
 			}
 			else if(key=='f' || key=='F') {
 				// MEREM
@@ -145,6 +158,7 @@ int main() {
 			}
 			else if(key=='q') {
 				// QUIT
+				myFace.normalExpression();
 				FB.drawCircle(Point(345,248),9,255, 255, 255, 0);
 				FB.drawCircle(Point(455,248),9,255, 255, 255, 0);
 				quit = true;
@@ -157,6 +171,16 @@ int main() {
 			}
 			myFace.drawFace();
 			colorFace();
+			
+			if (key=='1'){ //pirang
+				FB.floodFill(400,170,0,0,0,218,165,32);
+			} else if (key=='2'){ //coklat
+				FB.floodFill(400,170,0,0,0,139,0,0);
+			} else if (key=='3'){ //storm
+				FB.floodFill(400,170,0,0,0,255,255,255);
+				FB.floodFill(342,250,0,0,0,255,255,255);
+				FB.floodFill(450,250,0,0,0,255,255,255);
+			}
 			
 		}
 
@@ -209,5 +233,7 @@ void colorFace() {
 	FB.floodFill(438,250,135,206,235,255,255,255);
 	FB.floodFill(450,250,135,206,235,0,0,0);
 	FB.floodFill(466,250,135,206,235,255,255,255);
+	
+	//rambut
 	FB.floodFill(400,170,135,206,235,0,0,0);
 }

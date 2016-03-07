@@ -78,6 +78,7 @@ Face::Face(map<string, vector<Point> > curves) {
 	face.push_back(Curve(temp, d));
 	normal_exp.push_back(Curve(temp, d));
 	
+	//10
 	temp.clear();
 	temp = curves.find("hair")->second;
 	lips.push_back(Curve(temp, d));
@@ -191,6 +192,8 @@ void Face::laugh(float dy) {
 	face.push_back(normal_exp.at(6));
 	face.push_back(normal_exp.at(7));
 	face.push_back(normal_exp.at(10));
+	face.push_back(normal_exp.at(8));
+	
 	//yang berubah mulutnya	
 	vector<Point> temp;
 	temp = tags.find("laughTag")->second;
@@ -220,23 +223,21 @@ void Face::cry(float eye, float mouth) {
 
 	vector<Point> temp;
 	temp = tags.find("lipTag")->second;
-	for (int x=0; x<2; x++) {
-		Curve curve = lips.at(x);
-		for (int i=0; i<temp.size(); i++) {
-			for (int j=0; j<curve.points.size(); j++) {
-				if (temp.at(i).x == curve.points.at(j).x &&
-					temp.at(i).x == curve.points.at(j).x) {
-						curve.points.at(j).y += mouth;
-				}
+	Curve curve = lips.at(0);
+	for (int i=0; i<temp.size(); i++) {
+		for (int j=0; j<curve.points.size(); j++) {
+			if (temp.at(i).x == curve.points.at(j).x &&
+				temp.at(i).x == curve.points.at(j).x) {
+					curve.points.at(j).y += mouth;
 			}
 		}
-		curve.computeFinals();
-		face.push_back(curve);
 	}
+	curve.computeFinals();
+	face.push_back(curve);
 
 	temp = tags.find("eyeTag")->second;
 	for (int x=0; x<4; x++) {
-		Curve curve = eyes.at(x);
+		curve = eyes.at(x);
 		for (int i=0; i<temp.size(); i++) {
 			for (int j=0; j<curve.points.size(); j++) {
 				if (temp.at(i).x == curve.points.at(j).x &&
