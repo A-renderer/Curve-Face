@@ -144,6 +144,11 @@ int main() {
 				// MEREM
 				myFace.eyesClosed();
 			}
+			else if(key=='g' || key=='G') {
+				// WINK
+				myFace.wink();
+				FB.drawCircle(Point(455,248),9,255, 255, 255, 0);
+			}
 			else if(key=='q') {
 				// QUIT
 				FB.drawCircle(Point(345,248),9,255, 255, 255, 0);
@@ -151,6 +156,8 @@ int main() {
 				quit = true;
 			}
 			else {
+				// BACK TO NORMAL
+				myFace.normalExpression();
 				FB.drawCircle(Point(345,248),9,255, 255, 255, 0);
 				FB.drawCircle(Point(455,248),9,255, 255, 255, 0);
 			}
